@@ -1,13 +1,20 @@
-* {
+:root{
+    --bgPrimary:#e4f2f2;
+}
+
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
+  width: 20rem;
+  background: var(--bgPrimary);
 }
 .header {
   display: flex;
+  padding:0 0.5rem;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -21,16 +28,19 @@ ul {
   flex-direction: row;
   justify-content: space-around;
   padding: 1rem 3rem;
+  background: #3b5552;
 }
 .nav li {
-  border: 1px solid #000;
+  border: 1px solid #ce9e37;
   height: 2.5rem;
   width: 2.5rem;
   text-align: center;
   line-height: 2.3rem;
   border-radius: 50%;
+  color: #ce9e37;
 }
 .noteParent {
+    padding: 0.5rem;
   display: flex;
   flex-direction: row;
 }
