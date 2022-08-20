@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 0.5rem;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1rem 3rem;
+}
+.nav li {
+  border: 1px solid #000;
+  height: 2.5rem;
+  width: 2.5rem;
+  text-align: center;
+  line-height: 2.3rem;
+  border-radius: 50%;
+}
+.noteParent {
+  display: flex;
+  flex-direction: row;
+}
+.note {
+  width: 100%;
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+.textBtns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.noteBtns {
+  border: 1px solid #000;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.noteBtns img {
+  height: 1.2rem;
+  width: 1.2rem;
+}
