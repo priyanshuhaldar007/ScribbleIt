@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 :root{
     --bgPrimary:#e4f2f2;
 }
@@ -14,9 +16,11 @@ body {
 }
 .header {
   display: flex;
-  padding:0 0.5rem;
+  padding: 0.5rem;
   flex-direction: row;
   justify-content: space-between;
+  font-family: 'Roboto Mono', monospace;
+
 }
 ul {
   list-style: none;
