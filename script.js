@@ -3,6 +3,7 @@ var add = document.getElementById("add");
 var save = document.getElementById("save");
 var del = document.getElementById("delete");
 var textarea = document.getElementById("textarea");
+var screenshot = document.getElementById("shot");
 
 var saved = localStorage.getItem("listItems");
 var note = localStorage.getItem("note");
@@ -31,6 +32,8 @@ download.addEventListener("click", function () {
 clear.addEventListener("click", function () {
   clearList();
 });
+
+screenshot.addEventListener('click', capture)
 
 // const noteCard = `<li class="noteCard">
 // <div>
@@ -122,4 +125,21 @@ function downloadToFile() {
 function clearList() {
   localStorage.clear();
   list.innerHTML = "";
+}
+function capture() {
+  const captureElement = document.querySelector('#capture')
+  html2canvas(captureElement)
+      .then(canvas => {
+          canvas.style.display = 'none'
+          document.body.appendChild(canvas)
+          return canvas
+      })
+      .then(canvas => {
+          const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+          const a = document.createElement('a')
+          a.setAttribute('download', 'my-image.png')
+          a.setAttribute('href', image)
+          a.click()
+          canvas.remove()
+      })
 }
