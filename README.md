@@ -36,6 +36,9 @@ We have tried numerous note taking chrome extensions but they missed an importan
 - CSS
 - JS
 
+### :octocat: Repo Link
+<a href="#">Github</a>
+
 ### :clapper: Demo Link
 <a href="#">Youtube</a>
 
