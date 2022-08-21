@@ -22,18 +22,45 @@
       <span><img src="" alt="" /></span>
     </header>
     <ul class="nav">
-      <li><i class="fa-solid fa-file-arrow-down"></i></li>
-      <li><i class="fa-solid fa-trash-can"></i></li>
-      <li><i class="fa-solid fa-cloud-arrow-up"></i></li>
-      <li><i class="fa-solid fa-cloud-arrow-down"></i></li>
+      <button id="download">
+        <li><i class="fa-solid fa-file-arrow-down"></i></li>
+      </button>
+      <button id="clear">
+        <li><i class="fa-solid fa-trash-can"></i></li>
+      </button>
+      <button id="search">
+        <li><i class="fa-solid fa-search"></i></li>
+      </button>
+      <button id="">
+        <li><i class="fa-solid fa-highlighter"></i></li>
+      </button>
     </ul>
-    <section class="noteParent">
-      <textarea class="note" name="" id="" rows="4" placeholder="Write your note here..."></textarea>
-      <div class="textBtns">
-        <span class="noteBtns"><i class="fa-solid fa-check"></i></span>
-        <span class="noteBtns"><img src="./images/addPhoto.png" alt="" /></span>
-      </div>
-    </section>
+    <div class="container">
+      <form id="form">
+        <div class="noteParent">
+          <textarea
+            class="textarea"
+            id="textarea"
+            name="textarea_description"
+            rows="4"
+            cols="35"
+            maxlength="100"
+            minlength="1"
+            placeholder="Write your note here..."
+          ></textarea>
+          <div class="textBtns">
+            <button class="noteBtns" id="add">
+              <i class="fa-solid fa-check"></i>
+            </button>
+            <button class="noteBtns" id="">
+              <img src="./images/addPhoto.png" alt="" />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+      <div id="list"></div>
+      <script src="script.js"></script>
+    </div>
   </body>
-  <script src="script.js"></script>
 </html>

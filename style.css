@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
-:root{
-    --bgPrimary:#e4f2f2;
+:root {
+  --bgPrimary: #e4f2f2;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,8 +19,7 @@ body {
   padding: 0.5rem;
   flex-direction: row;
   justify-content: space-between;
-  font-family: 'Roboto Mono', monospace;
-
+  font-family: "Roboto Mono", monospace;
 }
 ul {
   list-style: none;
@@ -35,7 +34,6 @@ ul {
   background: #3b5552;
 }
 .nav li {
-  border: 1px solid #ce9e37;
   height: 2.5rem;
   width: 2.5rem;
   text-align: center;
@@ -43,8 +41,15 @@ ul {
   border-radius: 50%;
   color: #ce9e37;
 }
+.nav button {
+  border: 1px solid #ce9e37;
+  text-align: center;
+  line-height: 2.3rem;
+  border-radius: 50%;
+  color: #ce9e37;
+}
 .noteParent {
-    padding: 0.5rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: row;
 }
@@ -54,6 +59,7 @@ ul {
   padding: 0.5rem;
 }
 .textBtns {
+  margin-left: 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -66,8 +72,16 @@ ul {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  background-color: #3b5552;
 }
 .noteBtns img {
   height: 1.2rem;
   width: 1.2rem;
+}
+li {
+  padding: 5px;
+  list-style-type: none;
+  margin: 7px 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
 }
