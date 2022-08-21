@@ -232,3 +232,8 @@ button {
     display: flex;
     flex-direction: row;
 }
+#date {
+  font-size: x-small;
+  color: #838383;
+  padding: 2px;
+}

@@ -60,41 +60,32 @@ function addItemToList() {
   var item = document.getElementById("textarea").value;
   var list = document.getElementById("list");
   var d = new Date();
-  var date =
-    "<div id='date'>" +
-    d.getHours() +
-    ":" +
-    d.getMinutes() +
-    " " +
-    d.getDate() +
-    "/" +
-    d.getMonth() +
-    "/" +
-    d.getFullYear() +
-    "</div>";
-//   const noteCard = `<li class="noteCard">
-//                         <div>
-//                             <p>${item}</p>
-//                             <span>${date}</span>
-//                         </div>
-//                         // <div>
-//                         //     <img src=${imgSrc}/>
-//                         // </div>
-//                         <div>
-//                             <button id="clear">
-//                                 <li>
-//                                 <span class="trash">
-//                                     <span></span>
-//                                     <i></i>
-//                                 </span>
-//                                 </li>
-//                             </button>
-//                             <button id="search">
-//                                 <li><i class="fa-solid fa-search"></i></li>
-//                             </button>
-//                         </div>
-//                     </li>`;
-  var listItem = "<li>" + item + date + "</li>";
+  var date = `<div id='date'>
+    ${d.getHours()} 
+    :
+    ${d.getMinutes()} 
+    ${d.getDate()} 
+    /
+    ${d.getMonth()} 
+    /
+    ${d.getFullYear()} 
+    </div>`;
+
+  var buttons = `
+    </div>
+    <button id="">
+         <li>
+           <span class="trash">
+             <span></span>
+             <i></i>
+           </span>
+         </li>
+       </button>
+       <button id="">
+         <li><i class="fa-solid fa-search"></i></li>
+       </button>`;
+  
+  var listItem = "<li>" + item + date + buttons + "</li>";
   if (item != "") list.innerHTML = listItem + list.innerHTML;
   document.getElementById("textarea").value = "";
   localStorage.setItem("listItems", list.innerHTML);
