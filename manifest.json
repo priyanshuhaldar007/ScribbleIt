@@ -1,0 +1,11 @@
+{
+    "name": "Scrible.It",
+    "version": "1.0.0",
+    "description": "Add and store notes seemlessly",
+    "manifest_version": 3,
+    "author": "Priyanshu Haldar",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Scrible.It"
+    }
+}

@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+:root {
+  --bgPrimary: #e4f2f2;
+}
+abbr {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* padding: 0.5rem; */
+  width: 20rem;
+  background: var(--bgPrimary);
+}
+.header {
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Roboto Mono", monospace;
+}
+.header h1 {
+  font-size: 1.5rem;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1rem 3rem;
+  background: #3b5552;
+}
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.nav li {
+  border: 1px solid #ce9e37;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #ce9e37;
+}
+.noteParent {
+  height: 7rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+.note {
+  width: 100%;
+  padding: 0.5rem;
+}
+.textBtns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  margin-left: 0.5rem;
+}
+.noteBtns {
+  border: 1px solid #000;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.noteBtns img {
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+}
+
+/* trash animation */
+.trash {
+  background: #ce9e37;
+  width: 1rem;
+  height: 1.2rem;
+  display: inline-block;
+  margin: 0 auto;
+  top: 0.4rem;
+  position: relative;
+  -webkit-border-bottom-right-radius: 0.2rem;
+  -webkit-border-bottom-left-radius: 0.2rem;
+  -moz-border-radius-bottomright: 0.2rem;
+  -moz-border-radius-bottomleft: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+.trash span {
+  position: absolute;
+  height: 0.2rem;
+  width: 1.3rem;
+  background: #ce9e37;
+  top: -0.3rem;
+  left: -0.15rem;
+  /* right: -0.5rem; */
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  transform: rotate(0deg);
+  transition: transform 250ms;
+  transform-origin: 19% 100%;
+  border: 1px solid #3b5552;
+}
+.trash span:after {
+  content: "";
+  position: absolute;
+  width: 0.4rem;
+  height: 0.2rem;
+  background: #ce9e37;
+  top: -0.25rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transform: rotate(0deg);
+  transition: transform 250ms ease 0s;
+  transform-origin: 19% 100%;
+  left: 0.46rem;
+}
+
+.trash i {
+  position: relative;
+  width: 0.1rem;
+  height: 80%;
+  background: #3b5552;
+  display: block;
+  margin: 0.1rem auto;
+  border-radius: 0.1rem;
+}
+.trash i:after {
+  content: "";
+  position: absolute;
+  left: -0.3rem;
+  width: 0.1rem;
+  height: 100%;
+  background: inherit;
+  display: block;
+  border-radius: 0.1rem;
+}
+.trash i:before {
+  content: "";
+  position: absolute;
+  right: -0.3rem;
+  width: 0.1rem;
+  height: 100%;
+  background: inherit;
+  display: block;
+  border-radius: 0.1rem;
+}
+
+.trash:hover span {
+  transform: rotate(-45deg);
+  transition: transform 250ms;
+}
+#list li {
+  padding: 5px;
+  list-style-type: none;
+  margin: 7px 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+/* Download file */
+#donwloader {
+  height: 2.2rem;
+  width: 2.2rem;
+  margin: 0 auto;
+  border-radius: 16%;
+  fill: none;
+  stroke: #ce9e37;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+#arrow {
+  transform: translateY(8px);
+}
+#downloadFile:hover #arrow {
+  animation: donwload 1.4s ease infinite;
+  transform: translateY(8px);
+}
+
+#downloadFile:hover #base {
+  transform-origin: 20px 28px;
+  animation: open 1.4s ease-in-out infinite;
+}
+
+@keyframes donwload {
+  0% {
+    transform: translateY(0px);
+  }
+  35% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+}
+
+@keyframes open {
+  0% {
+    transform: scale(1, 1);
+  }
+  15% {
+    transform: scale(1, 1);
+  }
+  23% {
+    transform: scale(1.1, 1);
+  }
+  29% {
+    transform: scale(0.9, 1);
+  }
+  31% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+#list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#list .noteContainer {
+  /* display: flex;
+  flex-direction: row; */
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 0.5fr;
+}
+.noteText {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.ncLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ncLeft .date {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.ncMid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.ncMid .noteImg {
+  height: 5rem;
+  width: 4rem;
+}
+.ncRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 0.5rem;
+  margin-right: 0;
+}
+.ncRight button {
+  /* padding: 0.5rem; */
+  color: #ce9e37;
+}
+.ncRight button abbr li {
+  border-radius: 50%;
+  width: 2rem;
+  transform: scale(0.9);
+}
+.ncRight #DeleteNote abbr li .trash span {
+  border-color: #ce9e37;
+}
+.ncRight #DeleteNote abbr li .trash i {
+  background: var(--bgPrimary);
+}
+#textarea {
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23DADBDB' d='M0 28h3v-1H0z' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-attachment: local;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #46494d;
+  display: block;
+  font-size: 18px;
+  line-height: 1.5em;
+  outline: none;
+  padding: 0 3px;
+  resize: none;
+}
+.seperatorBorder {
+  border-bottom: 1px dashed #000;
+}
