@@ -23,10 +23,20 @@
     </header>
     <ul class="nav">
       <button id="download">
-        <li><i class="fa-solid fa-file-arrow-down"></i></li>
+        <li>
+          <svg id="donwloader" width="80" height="80" viewBox="0 0 40 40">
+            <path id="arrow" d="m20 4 v14 m-5 -5 l5 5 5 -5"></path>
+            <path id="base" d="m10 28 v4 h 20 v-4"></path>
+          </svg>
+        </li>
       </button>
       <button id="clear">
-        <li><i class="fa-solid fa-trash-can"></i></li>
+        <li>
+          <span class="trash">
+            <span></span>
+            <i></i>
+          </span>
+        </li>
       </button>
       <button id="search">
         <li><i class="fa-solid fa-search"></i></li>
@@ -35,15 +45,14 @@
         <li><i class="fa-solid fa-highlighter"></i></li>
       </button>
     </ul>
-    <div class="container">
+    <div class="container" style="padding: 0">
       <form id="form">
         <div class="noteParent">
           <textarea
-            class="textarea"
+            class="note"
             id="textarea"
             name="textarea_description"
             rows="4"
-            cols="35"
             maxlength="100"
             minlength="1"
             placeholder="Write your note here..."
@@ -59,8 +68,7 @@
         </div>
       </form>
     </div>
-      <div id="list"></div>
-      <script src="script.js"></script>
-    </div>
+    <div id="list"></div>
+    <script src="script.js"></script>
   </body>
 </html>
