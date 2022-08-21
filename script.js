@@ -32,7 +32,31 @@ clear.addEventListener("click", function () {
   clearList();
 });
 
+// const noteCard = `<li class="noteCard">
+// <div>
+// <p>${item}</p>
+// <span>${date}</span>
+// </div>
+// <div>
+// <img src=${imgSrc}/>
+// </div>
+// <div>
+// <button id="clear">
+//         <li>
+//           <span class="trash">
+//             <span></span>
+//             <i></i>
+//           </span>
+//         </li>
+//       </button>
+//       <button id="search">
+//         <li><i class="fa-solid fa-search"></i></li>
+//       </button>
+// </div>
+// </li>`;
+
 function addItemToList() {
+
   var item = document.getElementById("textarea").value;
   var list = document.getElementById("list");
   var d = new Date();
@@ -48,6 +72,28 @@ function addItemToList() {
     "/" +
     d.getFullYear() +
     "</div>";
+//   const noteCard = `<li class="noteCard">
+//                         <div>
+//                             <p>${item}</p>
+//                             <span>${date}</span>
+//                         </div>
+//                         // <div>
+//                         //     <img src=${imgSrc}/>
+//                         // </div>
+//                         <div>
+//                             <button id="clear">
+//                                 <li>
+//                                 <span class="trash">
+//                                     <span></span>
+//                                     <i></i>
+//                                 </span>
+//                                 </li>
+//                             </button>
+//                             <button id="search">
+//                                 <li><i class="fa-solid fa-search"></i></li>
+//                             </button>
+//                         </div>
+//                     </li>`;
   var listItem = "<li>" + item + date + "</li>";
   if (item != "") list.innerHTML = listItem + list.innerHTML;
   document.getElementById("textarea").value = "";
