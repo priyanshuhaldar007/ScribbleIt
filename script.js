@@ -10,6 +10,93 @@ var captureElement = document.getElementById("capture");
 var list = document.getElementById("list");
 var DeleteNote = document.getElementById("DeleteNote");
 var SearchNote = document.getElementById("SearchNote");
+var noteArr = [];
+
+var imgFlag = 0;
+addImg.addEventListener("click", function () {
+  imgFlag = 1;
+});
+
+//take input from form
+function getVals() {
+  var noteText = textarea.value;
+  textarea.value='';
+  var imgSrc = "";
+  if (imgFlag == 1) {
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+    oFReader.onload = function (oFREvent) {
+      imgSrc = oFREvent.target.result;
+
+      addItemToList(noteText, imgSrc);
+      pushArr(noteText, imgSrc);
+    };
+  } else {
+    addItemToList(noteText, imgSrc);
+    pushArr(noteText, imgSrc);
+  }
+}
+
+//push to array
+function pushArr(noteText, imgSrc) {
+  noteObj = { noteContent: noteText, imgPath: imgSrc };
+  noteArr.push(noteObj);
+  //   noteArr.unshift(noteObj);
+  console.log(noteArr);
+  noteParent = Object.assign({}, noteArr);
+  localStorage.setItem("notes", JSON.stringify(noteParent));
+}
+
+//get from localstorage
+function fetchVals() {
+  var noteParent = JSON.parse(localStorage.getItem("notes"));
+  if (noteParent == undefined || noteParent == null) {
+    noteParent = {};
+  }
+  var dataArr = Object.values(noteParent);
+  console.log(dataArr);
+  dataArr.map((ele) => {
+    pushArr(ele.noteContent, ele.imgPath);
+    addItemToList(ele.noteContent, ele.imgPath);
+  });
+}
+
+window.onload = (event) => {
+  noteArr = [];
+  list.innerHTML = "";
+  fetchVals();
+};
+
+//delete individual note
+function deleteNote(el) {
+  var note = el.parentElement.parentElement;
+  note.style.display = "none";
+  console.log(noteArr);
+  var currNote = note.firstChild.firstChild.innerText;
+  var index = 0;
+  noteArr.map((ele) => {
+    if (currNote == ele.noteContent) {
+      noteArr.splice(index, 1);
+    }
+    index += 1;
+  });
+  console.log(noteArr);
+  noteParent = Object.assign({}, noteArr);
+  localStorage.setItem("notes", JSON.stringify(noteParent));
+}
+
+//search from individual note
+function searchNote(el) {
+  var note = el.parentElement.parentElement;
+  var input = note.firstChild.firstChild.innerText;
+  var query = "https://www.google.com/search?q=" + encodeURIComponent(input);
+  if (input != "")
+    if (input != "") {
+      localStorage.setItem("note", input);
+      window.open(query);
+    }
+}
 
 //file downloading
 function downloadToFile() {
@@ -31,6 +118,7 @@ function downloadToFile() {
 //emptying the list
 function clearList() {
   localStorage.clear();
+  noteArr = [];
   list.innerHTML = "";
 }
 
@@ -56,13 +144,15 @@ function capture() {
 }
 
 //uploading the image
-function PreviewImage() {
-  var oFReader = new FileReader();
-  oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+if (imgFlag == 1) {
+  function PreviewImage() {
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
 
-  oFReader.onload = function (oFREvent) {
-    document.getElementsByClassName("noteImg").src = oFREvent.target.result;
-  };
+    oFReader.onload = function (oFREvent) {
+      document.getElementsByClassName("noteImg").src = oFREvent.target.result;
+    };
+  }
 }
 
 //take snapshot
@@ -87,28 +177,31 @@ function capture() {
 }
 
 //Create note
-function createNote() {
+function createNote(noteContent, imgSrc) {
   let noteContainer = document.createElement("li");
   let ncLeft = document.createElement("div");
   let ncMid = document.createElement("div");
   let ncRight = document.createElement("div");
   let date = document.createElement("div");
   var ncRightContent = `
-    <button id="">
-         <li>
-           <span class="trash">
-             <span></span>
-             <i></i>
-           </span>
-         </li>
-       </button>
-       <button id="searchNote">
-         <li><i class="fa-solid fa-search"></i></li>
-       </button>`;
+    <button id="DeleteNote" onclick="deleteNote(this)">
+    <abbr title="Delete Note">
+    <li>
+      <span class="trash">
+        <span></span>
+        <i></i>
+      </span></li
+  ></abbr>
+</button>
+<button id="searchNote" onclick="searchNote(this)">
+  <abbr title="Search Note">
+    <li><i class="fa-solid fa-search"></i></li>
+  </abbr>
+</button>`;
   let noteText = document.createElement("div");
   let noteImg = document.createElement("img");
 
-  noteText.innerText = textarea.value;
+  noteText.innerText = noteContent;
   var d = new Date();
   var CurrDate = `${d.getHours()}:${d.getMinutes()} ${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
 
@@ -120,12 +213,15 @@ function createNote() {
   noteImg.classList.add("noteImg");
   noteText.classList.add("noteText");
 
-  var oFReader = new FileReader();
-  oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
-
-  oFReader.onload = function (oFREvent) {
-    noteImg.src = oFREvent.target.result;
-  };
+  if (imgSrc != '') {
+    console.log(imgSrc);
+    noteImg.src = imgSrc;
+  } else {
+    noteImg.style.height = 0;
+    noteImg.style.width = 0;
+    ncMid.style.display = "none";    
+    noteContainer.style.gridTemplateColumns = '4.5fr 0.5fr';
+  }
 
   date.innerText = CurrDate;
   ncRight.innerHTML = ncRightContent;
@@ -141,14 +237,20 @@ function createNote() {
 }
 
 //add note
-function addItemToList() {
-  list.appendChild(createNote());
+function addItemToList(noteText, imgSrc) {
+    // console.log(noteText,'\n', imgSrc);
+  list.prepend(createNote(noteText, imgSrc));
+//   textarea.value = "";
+  //   imgFlag;
 }
 
 //button calling
 addNote.addEventListener("click", function () {
-  // console.log('added');
-  addItemToList();
+  // addItemToList();
+  if (textarea.value != "") {
+    console.log(imgFlag);
+    getVals();
+  }
 });
 
 clearAll.addEventListener("click", function () {
